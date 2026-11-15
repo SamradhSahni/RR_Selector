@@ -1,0 +1,107 @@
+# SupeRR Selector Season 2: Comprehensive Architecture & Methodology Documentation (llms-full.txt)
+
+## 1. Executive Summary & Challenge Mandate
+The SupeRR Selector Season 2 (Round 1) challenge tasks us with engineering a data-driven system to distinguish players who consistently rise to the occasion in high-pressure match situations from those whose performance dips when the stakes are highest.
+
+The competition mandates two primary deliverables:
+1. **Player Rankings (Unstop Dropdowns):**
+   - Ordered Top-10 Batters Under Pressure (Rank 1 to 10).
+   - Ordered Top-10 Bowlers Under Pressure (Rank 1 to 10).
+2. **Methodology Report (Document Upload):**
+   - Precise mathematical and contextual definition of match pressure.
+   - Comprehensive performance baseline vs. pressure differential metrics.
+   - Fair comparison governance (sample sizes, IPL vs T20I conditions, player eligibility).
+   - Empirical proof, tabular data, and visual evidence validating the final rankings.
+   - Reliability testing, consistency checks, and transparent limitations.
+
+---
+
+## 2. Dataset Inventory & Statistical Profile
+Located in `Data Pack/`:
+- **`ball_by_ball.csv` (200,999 deliveries across 867 matches):**
+  - Delivery-level records spanning IPL and T20Is from Jan 2022 to Nov 2026.
+  - Columns include match, innings, over, ball number, teams, striker, non-striker, bowler, pitch style, speed, shot stroke, runs off the bat, boundaries, dismissals, and detailed extra runs.
+- **`matches.csv` (883 matches):**
+  - Metadata covering tournament stage (League: 620, Others: 226, Knockouts/Playoffs: 31), venues (98 venues in 17 countries), toss decisions, revised DLS targets, winner, and result descriptions.
+- **`competitions.csv` (141 competitions):**
+  - 5 complete IPL seasons (IPL 2022, 2023, 2024, 2025, 2026).
+  - 2 Emerging / Rising Stars Asia Cups.
+  - 134 T20 International bilateral series and ICC tournaments.
+- **`competition_team_player_mapping.csv` (6,413 rows, 1,217 players):**
+  - Canonical player ID to name mappings for resolving player identities across franchises and national teams.
+- **`playing_eleven.csv` (28,381 rows, 1,082 players):**
+  - Match appearance records, batting orders, captaincy, wicketkeepers, and 558 Impact Player activations.
+- **`teams.csv` (353 records, 38 unique teams):**
+  - Mapping team IDs to formal names across competitions.
+
+---
+
+## 3. The Cricket Pressure Framework & Mathematical Modeling
+
+### 3.1 Defining Dynamic Match Leverage
+Pressure in limited-overs cricket is dynamic and context-dependent:
+1. **Innings 2 Chase Dynamics (Required Run Rate vs. Balls Remaining):**
+   - As $RRR$ accelerates above standard baseline scoring rates (typically $8.50 \text{ RPO}$ in T20s) and remaining legal deliveries diminish ($\le 36 \text{ balls}$), the penalty for non-scoring deliveries grows exponentially.
+2. **Innings 1 & 2 Wickets-in-Hand Urgency:**
+   - Losing 3+ wickets in the 6-over Powerplay forces the middle order into high-leverage rebuilding where they must balance wicket preservation against scoring stagnation.
+3. **Phase-Specific Leverage (Death Overs 16–20):**
+   - The final 5 overs represent the highest run-concession risk for bowlers and highest scoring demand for batters.
+4. **Tournament Stakes Multiplier:**
+   - Elimination / Playoff matches (`knock_out == 1`) amplify the psychological and competitive weight of every delivery.
+
+### 3.2 Quantitative Leverage Index ($L_i$)
+For delivery $i$, the composite pressure score is defined as:
+$$L_i = \text{clip}\left(w_{\text{phase}} \cdot S_{\text{phase}} + w_{\text{rrr}} \cdot S_{\text{rrr}} + w_{\text{wkt}} \cdot S_{\text{wkt}} + w_{\text{ko}} \cdot S_{\text{ko}}, 0.0, 1.0\right)$$
+Deliveries with $L_i \ge 0.55$ are classified as **High Pressure**, while all other deliveries form the **Baseline Control**.
+
+### 3.3 Metric Formulations
+- **Batting Clutch Differential ($\Delta_{SR}$):**
+  $$\Delta_{SR} = SR_{\text{pressure}} - SR_{\text{baseline}}$$
+- **Bowling Clutch Differential ($\Delta_{\text{econ}}$):**
+  $$\Delta_{\text{econ}} = \text{Econ}_{\text{baseline}} - \text{Econ}_{\text{pressure}}$$
+- **Empirical Bayesian Shrinkage:**
+  $$w = \frac{N}{N + K} \quad (K = 50)$$
+  Prevents small-sample noise from artificially inflating players with limited high-pressure exposure.
+
+---
+
+## 4. Antigravity Workspace Architecture & Progressive Disclosure
+This workspace follows the progressive-disclosure topology prescribed by the Antigravity developer velocity blueprint:
+- `AGENTS.md`: Master instructions, routing protocols, and domain context.
+- `CLAUDE.md`: Cross-agent pointer.
+- `.gemini/config/mcp_config.json`: Registry of local FastMCP domain servers and cloud development servers.
+- `.gemini/config/hooks.json`: Pre-tool safety checks and post-file compilation gates.
+- `.agents/skills/`:
+  - `cricket-pressure-analytics/`: Domain-specific pressure calculations and rankings.
+  - `api-scaffolding/`: Contract-first Zod/Pydantic API endpoints.
+  - `security-checklist/`: Zero-trust, OWASP Top 10 hardening.
+  - `shader-webgl-optimization/`: 3D WebGL / GPU performance standards.
+  - `frontend-web-excellence/`: Core Web Vitals and accessible 4-state UI.
+  - `database-migrations/`: Zero-downtime schemas and query planning.
+  - `tdd-visual-verification/`: TDD and Playwright/Chrome DevTools verification.
+  - `aws-deployment/`: Cloud infrastructure and safe deployments.
+- `mcp-servers/`:
+  - `runtime-domain-mcp/`: FastMCP JSON-RPC server with `query_player_stats`, `get_top_pressure_players`, `get_dataset_summary`.
+  - `dev-telemetry-mcp/`: Diagnostics, repository health, and automated test runners.
+
+---
+
+## 5. Architectural Blueprints in `reference/`
+The `reference/` directory contains 15 definitive enterprise knowledge bases:
+1. `developer_velocity_ai_skills_mcp_antigravity_blueprint.md`
+2. `enterprise_ai_agent_runtime_rag_context_engineering_blueprint.md`
+3. `3d_frontend_engineering_tactile_ui_knowledge_base.md`
+4. `backend_core_api_gateway_master_blueprint.md`
+5. `client_side_state_synchronization_offline_first_local_browser_storage_architecture.md`
+6. `core_workspace_onboarding_notifications_blueprint.md`
+7. `docker_aws_production_infrastructure_blueprint.md`
+8. `enterprise_admin_backoffice_observability_ci_cd_knowledge_base.md`
+9. `payment_gateway_subscription_billing_ai_finops_architecture.md`
+10. `polyglot_databases_caching_storage_lifecycle_blueprint.md`
+11. `public_website_brand_trust_architecture_blueprint.md`
+12. `real_time_multiplayer_collaboration_presence_engine_specification.md`
+13. `web_api_cloud_security_knowledge_base.md`
+14. `ai_guardrails_safety_agentic_containment_blueprint.md`
+15. Supporting UI and infrastructure templates.
+
+Every pattern is strictly categorized as either `[MANDATORY]` (universal web excellence) or `[ACCORDING TO PS]` (driven by the SupeRR Selector problem statement).

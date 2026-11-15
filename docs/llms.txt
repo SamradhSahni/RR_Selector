@@ -1,0 +1,37 @@
+# SupeRR Selector Season 2 — AI Assistant Index (llms.txt)
+
+## Project Overview
+SupeRR Selector Season 2 (Round 1) data-driven system to identify and rank the Top 10 Batters and Top 10 Bowlers performing under high-pressure situations in T20 cricket (IPL 2022-2026 and T20Is 2022-2026).
+
+## Directory Map
+- `Data Pack/`: Relational CSV files containing ball-by-ball deliveries, matches, competitions, player mappings, and playing 11 records.
+  - `ball_by_ball.csv`: 200,999 delivery-level records.
+  - `matches.csv`: 883 match records with venues, knockout status, and outcomes.
+  - `competitions.csv`: 141 tournaments (5 IPL seasons + 134 T20I comps).
+  - `competition_team_player_mapping.csv`: 1,217 players mapped to teams and tournaments.
+  - `playing_eleven.csv`: Lineups, captaincy, and impact player flags.
+  - `teams.csv`: 38 unique cricket teams.
+- `reference/`: 15 architectural blueprints, UI specifications, and enterprise guidelines.
+- `docs/`: Technical specifications, data catalog, and AI context grounding.
+  - `docs/problem-statement-spec.md`: Parsed problem requirements and evaluation criteria.
+  - `docs/data_catalog.md`: Exhaustive schema documentation for all datasets.
+  - `docs/llms.txt`: This concise navigation index.
+- `.agents/skills/`: Antigravity progressive-disclosure playbooks.
+  - `cricket-pressure-analytics/SKILL.md`: Pressure metrics, leverage index, and ranking formulas.
+  - `api-scaffolding/SKILL.md`: Contract-first schema validation and endpoint standards.
+  - `security-checklist/SKILL.md`: OWASP and zero-trust engineering rules.
+  - `shader-webgl-optimization/SKILL.md`: 3D WebGL / GPU performance standards.
+  - `aws-deployment/SKILL.md`: Infrastructure as code and cloud deployment.
+  - `frontend-web-excellence/SKILL.md`: Core Web Vitals and 4-state UI coverage.
+  - `database-migrations/SKILL.md`: Zero-downtime schemas and query optimization.
+  - `tdd-visual-verification/SKILL.md`: TDD and Playwright/Chrome DevTools visual verification.
+- `.gemini/config/`: Antigravity configuration files.
+  - `mcp_config.json`: Development and runtime MCP servers.
+  - `hooks.json`: Safety and syntax verification hooks.
+- `mcp-servers/`:
+  - `runtime-domain-mcp/`: FastMCP server providing safe analytics queries and player statistics.
+  - `dev-telemetry-mcp/`: Project diagnostics and build health.
+
+## Core Rules & Verification
+- Follow `[MANDATORY]` engineering guidelines from `reference/developer_velocity_ai_skills_mcp_antigravity_blueprint.md`.
+- Read `AGENTS.md` before executing any workflow.
