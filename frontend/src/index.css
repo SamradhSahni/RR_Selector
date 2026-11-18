@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000c1f;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Authentic Rajasthan Royals Glassmorphism */
+.glass-panel {
+  background: rgba(0, 24, 64, 0.88);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(234, 26, 133, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 215, 0, 0.2);
+}
+
+.glass-panel-pink {
+  background: rgba(30, 8, 38, 0.90);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1.5px solid rgba(234, 26, 133, 0.60);
+  box-shadow: 0 0 60px rgba(234, 26, 133, 0.35), inset 0 1px 0 rgba(255, 215, 0, 0.3);
+}
+
+.glass-panel-gold {
+  background: rgba(24, 18, 5, 0.90);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1.5px solid rgba(255, 215, 0, 0.60);
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.30);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 18, 51, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ea1a85;
+  border-radius: 9999px;
+  border: 1px solid #ffd700;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4da6;
+}
+
+/* Slider styling */
+input[type='range'] {
+  accent-color: #ea1a85;
+}

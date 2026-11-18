@@ -1,0 +1,10 @@
+{
+  "name": "superr-selector-season-2-root",
+  "private": true,
+  "version": "3.0.0",
+  "scripts": {
+    "build": "npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

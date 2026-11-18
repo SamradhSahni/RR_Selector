@@ -15,6 +15,7 @@ SupeRR Selector Season 2 (Round 1) data-driven system to identify and rank the T
 - `docs/`: Technical specifications, data catalog, and AI context grounding.
   - `docs/problem-statement-spec.md`: Parsed problem requirements and evaluation criteria.
   - `docs/data_catalog.md`: Exhaustive schema documentation for all datasets.
+  - `docs/interactive_3d_warroom_dashboard_spec.md`: Master architectural blueprint for the 3D interactive war-room dashboard.
   - `docs/llms.txt`: This concise navigation index.
 - `.agents/skills/`: Antigravity progressive-disclosure playbooks.
   - `cricket-pressure-analytics/SKILL.md`: Pressure metrics, leverage index, and ranking formulas.
