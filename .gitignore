@@ -72,3 +72,19 @@ data/external/
 .coverage
 .pytest_cache/
 htmlcov/
+
+# Reference materials used for initial building (do not commit)
+reference/
+
+# Agent, Tooling & IDE Building Artifacts
+.agents/
+.gemini/
+CLAUDE.md
+AGENTS.md
+superr_selector_season_2_implementation_plan.md
+mcp-servers/
+
+# TypeScript build info & caches
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
