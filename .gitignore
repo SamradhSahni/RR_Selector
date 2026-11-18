@@ -51,9 +51,9 @@ yarn-error.log*
 .next/
 out/
 
-# Data files
-data/processed/*.parquet
-data/external/
+# Proprietary Competition Data & Processed Artifacts (Copyright Compliance)
+Data Pack/
+data/
 
 .env
 .env.local

@@ -164,7 +164,6 @@ The interactive war room at [superrselector.samradhsahni.in](https://superrselec
 ## 📁 Repository Structure
 
 ```
-├── Data Pack/                         # Official ball-by-ball & match relational datasets
 ├── src/                               # Analytical pipeline modules
 │   ├── 01_ingest_and_clean.py         # Ingestion, validation & state schema
 │   ├── 02_external_enrichment.py      # ELO ratings, venue pars & pitch profiles
@@ -176,9 +175,6 @@ The interactive war room at [superrselector.samradhsahni.in](https://superrselec
 ├── scripts/                           # Frontend static data generator & verification
 │   ├── export_frontend_static_bundle.py # Generates verified 312 KB static bundle
 │   └── verify_static_bundle.py        # Mathematical parity verification script
-├── data/processed/                    # Processed CSVs & final Top-10 outputs
-│   ├── unstop_top10_batters_under_pressure.csv
-│   └── unstop_top10_bowlers_under_pressure.csv
 ├── reports/                           # Official Methodology Report & evidence tables
 │   ├── superr_selector_season_2_methodology_report.md
 │   ├── top10_evidence_tables.md
@@ -196,6 +192,15 @@ The interactive war room at [superrselector.samradhsahni.in](https://superrselec
 ├── package.json                       # Root script orchestrator
 └── README.md                          # Executive project documentation
 ```
+
+---
+
+## 🔒 Data Governance & Copyright Compliance
+
+In strict adherence to Rajasthan Royals, BCCI/IPL, and tournament data licensing agreements:
+- **Proprietary Raw Data Excluded:** The official competition dataset (`Data Pack/`) containing raw ball-by-ball logs, match files, and player registries is strictly ignored in `.gitignore` and **not distributed on public GitHub**.
+- **Local Reproduction:** To run the data pipelines locally, place the official competition `Data Pack/` directory into your local repository root before running the scripts in `src/`.
+- **Zero-Exposure Serverless Frontend:** The live 3D War Room at [superrselector.samradhsahni.in](https://superrselector.samradhsahni.in/) runs completely serverless via the compiled analytical dossier bundle in `frontend/src/data/warRoomStaticData.ts` without distributing or exposing any raw proprietary database records.
 
 ---
 
